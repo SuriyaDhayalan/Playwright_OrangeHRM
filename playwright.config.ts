@@ -35,8 +35,17 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    /* Login tests run first and save the logged-in session */
     {
-      name: 'chromium',
+      name: 'login',
+      testMatch: /Login_Test\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    /* Dashboard tests run only if all login tests pass; they log in and keep one window open */
+    {
+      name: 'dashboard',
+      testMatch: /Dashboard_Test\.spec\.ts/,
+      dependencies: ['login'],
       use: { ...devices['Desktop Chrome'] },
     },
 
