@@ -1,10 +1,33 @@
-{
-   "validLogin":{
-      "username":"Admin",
-      "password":"admin123"
+[
+   {
+      "testName": "Valid login with correct username and password",
+      "username": "Admin",
+      "password": "admin123",
+      "expected": "success",
+      "run": true
    },
-   "invalidLogin":{
-      "username":"InvalidUser",
-      "password":"InvalidPassword"
+   {
+      "testName": "Invalid login with wrong username",
+      "username": "InvalidUser",
+      "password": "admin123",
+      "expected": "failure",
+      "errorMessage": "Invalid credentials",
+      "run": false
+   },
+   {
+      "testName": "Invalid login with wrong password",
+      "username": "Admin",
+      "password": "InvalidPassword",
+      "expected": "failure",
+      "errorMessage": "Invalid credentials",
+      "run": false
+   },
+   {
+      "testName": "Invalid login with wrong username and password",
+      "username": "InvalidUser",
+      "password": "InvalidPassword",
+      "expected": "failure",
+      "errorMessage": "Invalid credentials",
+      "run": false
    }
-}
+]

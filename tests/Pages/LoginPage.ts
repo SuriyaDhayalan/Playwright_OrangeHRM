@@ -18,6 +18,7 @@ constructor(page: Page) {
 
 async gotoLoginPage() {
     await this.page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    await this.page.waitForLoadState();
 }
 
 async login(username: string, password: string) {
