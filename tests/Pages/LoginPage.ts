@@ -5,6 +5,7 @@ export class LoginPage {
     readonly username: Locator;
     readonly password: Locator;
     readonly loginButton:Locator;
+    readonly errorMessage: Locator;
 
 
 constructor(page: Page) {
@@ -12,6 +13,7 @@ constructor(page: Page) {
     this.username = page.locator('input[name="username"]');
     this.password = page.locator('input[name="password"]');
     this.loginButton = page.locator('button[type="submit"]');
+    this.errorMessage = page.locator('[class="oxd-text oxd-text--p oxd-alert-content-text"]');
 }
 
 async gotoLoginPage() {
@@ -23,9 +25,9 @@ async login(username: string, password: string) {
     await this.password.fill(password);
     await this.loginButton.click({ force: true });
 }
-async verifyLoginSuccess() {
+/* async verifyLoginSuccess() {
     await this.page.waitForURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
-    await this.page.waitForTimeout(2000);
-}
+    await this.page.waitForTimeout(2000); 
+} */
 
 }
