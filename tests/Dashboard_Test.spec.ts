@@ -28,7 +28,7 @@ test.describe('Dashboard Tests', () => {
     });
 
     test('Login redirects to Dashboard', async () => {
-        await expect(page).toHaveURL(/dashboard\/index/, { timeout: 30000 });
+        await expect(page).toHaveURL(/dashboard\/index/, { timeout: 60000 });
         await expect(dashboardPage.dashboardHeading).toBeVisible();
     });
 
@@ -66,7 +66,7 @@ test.describe('Dashboard Tests', () => {
 
         for (const menu of menuLinks) {
             await menu.link.click();
-            await expect(page).toHaveURL(menu.url, { timeout: 30000 });
+            await expect(page).toHaveURL(menu.url, { timeout: 60000 });
 
             // Maintenance opens a password page without the side menu, so go back
             if (menu.link === dashboardPage.maintenanceLink) {

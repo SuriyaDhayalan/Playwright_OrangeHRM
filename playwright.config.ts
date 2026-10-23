@@ -13,6 +13,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  /* Give every employee in EmployeeData.json a new Employee Id and Username before each run */
+  globalSetup: require.resolve('./global-setup'),
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -45,6 +47,13 @@ export default defineConfig({
     {
       name: 'dashboard',
       testMatch: /Dashboard_Test\.spec\.ts/,
+      dependencies: ['login'],
+      use: { ...devices['Desktop Chrome'] },
+    },
+    /* PIMS tests run only if all login tests pass; they create the employees from EmployeeData.json */
+    {
+      name: 'pims',
+      testMatch: /PIMS_Test\.spec\.ts/,
       dependencies: ['login'],
       use: { ...devices['Desktop Chrome'] },
     },
