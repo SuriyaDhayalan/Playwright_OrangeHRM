@@ -57,6 +57,11 @@ export default defineConfig({
       dependencies: ['login'],
       use: { ...devices['Desktop Chrome'] },
     },
+    /* API tests use the request fixture only, no browser window */
+    {
+      name: 'api',
+      testMatch: /api_Test\.spec\.ts/,
+    },
 
     /*{
       name: 'firefox',
